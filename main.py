@@ -1,5 +1,6 @@
 import numpy as np 
 from Problem import *
+from Heuristic import *
 
 size = 3
 
@@ -18,8 +19,10 @@ def menu():
         return defaultPuzzle()
     elif val == 2:
         print("Enter your puzzle,use a zero to represent the blank")
+        #FIX ISSUE HERE WHERE THE INPUTTED ARRAY ARE NOT INTS
         for i in range(0,size):
             x,y,z = input("Enter the row and use space or tabs between numbers ").split()
+            
             puzzle.append([int(x),int(y),int(z)])
         return puzzle
 
@@ -28,7 +31,16 @@ def menu():
 def main():
     problem = Problem(menu())
     problem.print()
-    print(problem.heuristic(6))
+    #print(problem.getGoalState())
+    moves = problem.getLegalOps()
+    print(moves)
+
+    uniform = UniformHeur()
+    misplace = MisplacedHeur()
+    euclid = EuclidHeur()
+    #print(misplace.calculate(problem.getInitState(), problem.getGoalState()))
+    #print(euclid.calculate(problem.getInitState(), problem.getGoalState()))
+    #print(uniform.calculate(problem.getInitState(), problem.getGoalState()))
 
 if __name__ == "__main__":
     main()
