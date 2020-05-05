@@ -9,6 +9,9 @@ class Problem:
         self.goal_state = np.array([[1,2,3],[4,5,6],[7,8,0]])
     
     #------------------GETTER----------------#
+    def getInitState(self):
+        return self.initial_state
+    
     def getCurrentState(self):
         return self.current_state
     
@@ -20,25 +23,31 @@ class Problem:
 
     def getLegalOps(self):
         indices = np.where(self.current_state == 0)
-        #TO-DO
-        #Get all the legal operations as a tuple
+        moves = [indices[0][0], indices[1][0]]
+        allMoves = []
+        #Up
+        if moves[0] > 0:
+            allMoves.append(np.array([moves[0] - 1, moves[1]]))
+        #Down
+        if moves[0] < self.size - 1:
+            allMoves.append(np.array([moves[0] + 1, moves[1]]))
+
+        #Left
+        if moves[1] > 0:
+            allMoves.append(np.array([moves[0], moves[1] - 1]))
+
+        #Right
+        if moves[1] > self.size - 1:
+            allMoves.append(np.array([moves[0], moves[1] + 1]))
+
+        print("Test ", allMoves[0], "Item ", self.initial_state[allMoves[0][0]][allMoves[0][1]])
+
+        return allMoves
 
     #------------------SETTER----------------#
     def setInitState(self, matrix):
         self.init_state = matrix
         self.current_state = matrix
-
-    #---------------FUNCTIONS----------------#
-    def uniformHeuristic(self):
-        return 0 
-
-    #NEED TO FINISH WRITING getLegalOps() first
-    def euclidHeuristic(self):
-        distance = (np.subtract(np.where(self.goal_state == num), np.where(self.current_state == num)))
-        return abs(distance[1][0]) + abs(distance[0][0])
-
-    def misplacedHeuristic(self,num):
-
 
     #------------------PRINT-----------------#
     def print(self):
