@@ -40,7 +40,7 @@ class Problem:
         if moves[1] > self.size - 1:
             allMoves.append(np.array([moves[0], moves[1] + 1]))
 
-        print("Test ", allMoves[0], "Item ", self.initial_state[allMoves[0][0]][allMoves[0][1]])
+        #print("Test ", allMoves[0], "Item ", self.initial_state[allMoves[0][0]][allMoves[0][1]])
 
         return allMoves
 
