@@ -21,24 +21,29 @@ class Problem:
     def getExpandCount(self):
         return self.expand_count
 
+    #return a numpy array with all possible moves
+    #values represent the location the 0 can go
     def getLegalOps(self):
-        indices = np.where(self.current_state == 0)
+        arr = np.array(self.current_state)
+        indices = np.where(arr == 0)
+        #print("Indices", indices)
         moves = [indices[0][0], indices[1][0]]
         allMoves = []
+
         #Up
         if moves[0] > 0:
-            allMoves.append(np.array([moves[0] - 1, moves[1]]))
+            allMoves.append([moves[0] - 1, moves[1]])
         #Down
         if moves[0] < self.size - 1:
-            allMoves.append(np.array([moves[0] + 1, moves[1]]))
+            allMoves.append([moves[0] + 1, moves[1]])
 
         #Left
         if moves[1] > 0:
-            allMoves.append(np.array([moves[0], moves[1] - 1]))
+            allMoves.append([moves[0], moves[1] - 1])
 
         #Right
         if moves[1] > self.size - 1:
-            allMoves.append(np.array([moves[0], moves[1] + 1]))
+            allMoves.append([moves[0], moves[1] + 1])
 
         #print("Test ", allMoves[0], "Item ", self.initial_state[allMoves[0][0]][allMoves[0][1]])
 

@@ -9,7 +9,7 @@ def printPuzzle(matrix):
         print(matrix[i])
 
 def defaultPuzzle():
-    matrix = np.array([[1,2,3],[4,8,0],[7,6,5]])
+    matrix = [[1,2,3],[4,8,0],[7,6,5]]
     return matrix
 
 def menu():
@@ -19,10 +19,8 @@ def menu():
         return defaultPuzzle()
     elif val == 2:
         print("Enter your puzzle,use a zero to represent the blank")
-        #FIX ISSUE HERE WHERE THE INPUTTED ARRAY ARE NOT INTS
         for i in range(0,size):
             x,y,z = input("Enter the row and use space or tabs between numbers ").split()
-            
             puzzle.append([int(x),int(y),int(z)])
         return puzzle
 
