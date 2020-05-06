@@ -58,5 +58,3 @@ class Problem:
     def print(self):
         for i in range (0,self.size):
             print(self.current_state[i])
-    
-    
