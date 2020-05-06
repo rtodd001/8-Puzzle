@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 class Heuristic:
     def calculate(self, curr_state, goal_state):
@@ -22,5 +23,5 @@ class EuclidHeur(Heuristic):
         goal = np.array(goal_state)
         for i in range(len(curr_state)*len(curr_state)):
             dist = (np.subtract(np.where(goal == i), np.where(curr == i)))
-            totalDist += abs(dist[1][0]) + abs(dist[0][0])
+            totalDist += math.sqrt(abs(dist[1][0]) * abs(dist[1][0]) + abs(dist[0][0]) * abs(dist[0][0]))
         return totalDist
