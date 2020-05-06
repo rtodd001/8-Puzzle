@@ -5,8 +5,27 @@ from Search import *
 import heapq
 
 size = 3
-def defaultPuzzle():
-    matrix = [[1,2,3],[4,8,0],[7,6,5]]
+def defaultPuzzle(difficulty):
+    #matrix = [[1,2,3],[4,8,0],[7,6,5]]
+    #Trivial
+    if difficulty == 1:
+        matrix = [[1,2,3],[4,5,6],[7,8,0]]
+    #Very Easy
+    elif difficulty == 2:
+        matrix = [[1,2,3],[4,5,6],[7,0,8]]
+    #Easy
+    elif difficulty == 3:
+        matrix = [[1,2,0],[4,5,3],[7,8,6]]
+    #doable
+    elif difficulty == 4:
+        matrix = [[0,1,2],[4,5,3],[7,8,6]]
+    #Oh Boy
+    elif difficulty == 5:
+        matrix = [[8,7,1],[6,0,2],[5,4,3]]
+    #Impossible
+    elif difficulty == 6:    
+        matrix = [[1,2,3],[4,5,6],[8,7,0]]
+
     return matrix
 
 def menu():
@@ -17,7 +36,8 @@ def menu():
     euclid = EuclidHeur()
     search = Search()
     if val == 1:
-        puzzle = defaultPuzzle()
+        difficulty = int(input("Enter the difficulty level:\n1:Trivial\n2:Very Easy\n3:Easy\n4:doable\n5:Oh Boy\n6:Impossible\n"))
+        puzzle = defaultPuzzle(difficulty)
     elif val == 2:
         print("Enter your puzzle,use a zero to represent the blank")
         for i in range(0,size):
