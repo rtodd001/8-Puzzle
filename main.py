@@ -5,8 +5,6 @@ from Search import *
 import heapq
 
 size = 3
-temp = Problem()
-
 def defaultPuzzle():
     matrix = [[1,2,3],[4,8,0],[7,6,5]]
     return matrix
@@ -39,8 +37,7 @@ def menu():
 
 def main():
     #problem.print()
-
-    search.solve(problem, euclid)
+    menu()
 
 if __name__ == "__main__":
     main()

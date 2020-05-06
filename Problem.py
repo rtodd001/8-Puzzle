@@ -73,5 +73,7 @@ class Problem:
 
     #------------------PRINT-----------------#
     def print(self):
-        for i in range (0,self.size):
-            print(self.current_state[i])
+        for row in self.current_state:
+            for col in row:
+                print(col, end = " ")
+            print()
