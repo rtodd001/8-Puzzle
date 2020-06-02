@@ -3,6 +3,7 @@ from Problem import *
 from Heuristic import *
 from Search import *
 import heapq
+import time
 
 size = 3
 def defaultPuzzle(difficulty):
@@ -46,18 +47,23 @@ def menu():
     
     problem = Problem(puzzle)
     choice = int(input("Enter your choice of algorithm\nUniform Cost Search\nA* with the Misplaced Tile heuristic.\nA* with the Euclidian distance heuristic\n"))
+    start = time.time()
     if choice == 1:
         search.solve(problem, uniform)
     elif choice == 2:
         search.solve(problem, misplace)
     elif choice == 3:
         search.solve(problem, euclid)
+    print("Completed in {} seconds".format(time.time() - start))
 
 
 
 def main():
     #problem.print()
     menu()
+    """ my_dict = {'a' : [1], 'b' : 'two'}
+    print(my_dict.get('a')) """
+    #print(str([[1,2,3],[4,5,6],[8,7,0]]))
 
 if __name__ == "__main__":
     main()
